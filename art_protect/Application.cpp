@@ -5,11 +5,9 @@
  *********************************************************************/
 #include "Application.h"
 
-
 Application::Application()
+  : prox(D5, 120, 14)
 {
-  // Code
-  ; 
 }
   
 Application::~Application()
@@ -20,13 +18,13 @@ Application::~Application()
 
 void Application::init(void)
 {
-  // Code
-    ;
+  Serial.begin(9600);
 }
 
 
 void Application::run(void)
 {
-  // Code
-    ;
+  Serial.print("Distance : " + prox.getValue());
+  Serial.print(" Depasse : " + prox.isOutOfMargin());
+  Serial.println("Last value : " + prox[0]);
 }

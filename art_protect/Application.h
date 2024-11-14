@@ -6,13 +6,21 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
+#include "Proximity.h"
+
+
 /**
   * @class Application
   * @brief Classe Application 
 */    
 class Application
 {
+  private: 
+    Proximity prox;
+
   public :
+
+
     /**
      * @fn Application();
      * @brief Constructeur par defaut
