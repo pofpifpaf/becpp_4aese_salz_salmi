@@ -61,6 +61,7 @@ void Application::sensorsMonitoring()
     prox.setAlert(false);
   } else
   {
+    prox.setAlert(false);
     prox.setAcknowledgement(false);
   }
   
@@ -72,6 +73,7 @@ void Application::sensorsMonitoring()
     temp.setAlert(false);
   } else
   {
+    temp.setAlert(false);
     temp.setAcknowledgement(false);
   }
 
@@ -83,6 +85,7 @@ void Application::sensorsMonitoring()
     hum.setAlert(false);
   } else
   {
+    temp.setAlert(false);
     hum.setAcknowledgement(false);
   }
 }
