@@ -18,6 +18,8 @@ protected :
 	String abbreviation;
 	String unit;
 
+	bool acknowledgement;
+
 	static int nbSensors; 
 
 public :
@@ -32,6 +34,9 @@ public :
 	String getName();
 	String getAbbreviation();
 	String getUnit();
+
+	bool getAcknowledgement();
+	void setAcknowledgement(bool ack);
 
 	bool isOutOfMargin();
 

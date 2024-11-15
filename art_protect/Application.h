@@ -10,6 +10,9 @@
 #include "Temperature.h"
 #include "Humidity.h"
 #include "Screen.h"
+#include "SHT31.h"
+#include "Wire.h"
+#include <Ticker.h>
 
 
 /**
@@ -19,10 +22,10 @@
 class Application
 {
   private: 
-    Proximity prox;
-    Temperature temp;
-    Humidity hum;
-    Screen screen;
+    static Proximity prox;
+    static Temperature temp;
+    static Humidity hum;
+    static Screen screen;
 
   public :
 
@@ -47,5 +50,9 @@ class Application
      * @brief Fonction de lancement de l'application
     */
     void run(void);
+
+    static void updateScreen();
+
+    static void sensorsMonitoring();
 };
 #endif

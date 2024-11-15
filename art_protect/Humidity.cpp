@@ -22,6 +22,6 @@ float Humidity::getValue()
 {
 	sht31.read();
 	float buff = sht31.getHumidity();
-	history.push_back(buff);
+	//history.push_back(buff);
 	return buff;
 }

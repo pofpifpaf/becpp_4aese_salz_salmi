@@ -15,10 +15,10 @@ Proximity::Proximity(uint8_t pin)
 	nbSensors++;
 }
 
-float Proximity::getValue() 
+float Proximity::getValue()
 {
 	float buff = ultrasonic.MeasureInCentimeters();
-	history.push_back(buff);
+	//history.push_back(buff);
 	return buff; 
 }
 
