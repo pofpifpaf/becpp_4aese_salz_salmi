@@ -13,16 +13,14 @@ class Screen
 protected :
     rgb_lcd lcd;
 
-    bool alert;
+    void refreshSensor(Sensor& sens, int x, int y);
 
 public :
 	Screen();
 
-    bool checkAlert(Sensor& sens);
-
-    void refreshSensor(Sensor& sens, int x, int y);
-
     void refreshScreen(Proximity& prox, Temperature& temp, Humidity& hum);
+
+    void displayAlert(Sensor& sens);
 
 };
 
