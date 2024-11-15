@@ -30,28 +30,29 @@ void Application::init(void)
 
 void Application::run(void)
 {
-  // Serial.print("Distance : ");
-  // Serial.println(prox.getValue());
-  // delay(1000);
-  // Serial.print(" Depasse : ");
-  // Serial.println(prox.isOutOfMargin());
-  // delay(1000);
-  // Serial.print("Last value : ");
-  // Serial.println(prox[0]);
+    // Serial.print("Distance : ");
+    // Serial.println(prox.getValue());
+    // delay(1000);
+    // Serial.print(" Depasse : ");
+    // Serial.println(prox.isOutOfMargin());
+    // delay(1000);
+    // Serial.print("Last value : ");
+    // Serial.println(prox[0]);
 
-  // Serial.print("Temp = "); 
-  // Serial.print(temp.getValue());
-  // Serial.println(" C"); //The unit for  Celsius because original arduino don't support speical symbols
-  // Serial.print("Hum = "); 
-  // Serial.print(hum.getValue());
-  // Serial.println("%"); 
-  // Serial.println();
-  // delay(1000);
+    // Serial.print("Temp = "); 
+    // Serial.print(temp.getValue());
+    // Serial.println(" C"); //The unit for  Celsius because original arduino don't support speical symbols
+    // Serial.print("Hum = "); 
+    // Serial.print(hum.getValue());
+    // Serial.println("%"); 
+    // Serial.println();
+    // delay(1000);
 
-  screen.refreshScreen(prox, temp, hum);
-  delay(5000);
-  screen.displayAlert(prox);
-  delay(5000);
-
+    if (prox.isOutOfMargin() == false) {
+        screen.refreshScreen(prox, temp, hum);
+    } else {
+        screen.displayAlert(prox);
+    }
+    delay(500);
   
 }
