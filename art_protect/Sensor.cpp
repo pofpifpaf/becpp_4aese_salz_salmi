@@ -8,7 +8,8 @@ Sensor::Sensor(String n, String ab, String u)
  , unit(u)
  , marginLow(-1)
  , marginHigh(-1)
- , acknowledgement(true)
+ , acknowledgement(false)
+ , alert(false)
 {
 }
 
@@ -18,7 +19,8 @@ Sensor::Sensor(String n, String ab, String u, float mL, float mH)
  , unit(u)
  , marginLow(mL)
  , marginHigh(mH)
- , acknowledgement(true)
+ , acknowledgement(false)
+ , alert(false)
 {
 }
 
@@ -53,6 +55,9 @@ bool Sensor::getAcknowledgement() {return acknowledgement;}
 
 void Sensor::setAcknowledgement(bool ack) {acknowledgement = ack;}
 
+bool Sensor::getAlert() {return alert;}
+
+void Sensor::setAlert(bool al) {alert = al;}
 
 bool Sensor::isOutOfMargin()
 {

@@ -19,6 +19,7 @@ protected :
 	String unit;
 
 	bool acknowledgement;
+	bool alert;
 
 	static int nbSensors; 
 
@@ -37,6 +38,8 @@ public :
 
 	bool getAcknowledgement();
 	void setAcknowledgement(bool ack);
+	bool getAlert();
+	void setAlert(bool al);
 
 	bool isOutOfMargin();
 
