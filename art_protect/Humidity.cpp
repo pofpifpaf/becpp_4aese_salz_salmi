@@ -1,7 +1,7 @@
 #include "Humidity.h"
 
 Humidity::Humidity()
-	: Sensor()
+	: Sensor("Humidity", "H", "%")
 {
 	Wire.begin();
 	Wire.setClock(100000);
@@ -10,7 +10,7 @@ Humidity::Humidity()
 }
 
 Humidity::Humidity(float mL, float mH)
-	: Sensor(mL, mH)
+	: Sensor("Humidity", "H", "%", mL, mH)
 {
 	Wire.begin();
 	Wire.setClock(100000);

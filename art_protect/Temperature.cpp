@@ -1,7 +1,7 @@
 #include "Temperature.h"
 
 Temperature::Temperature()
-	: Sensor()
+	: Sensor("Temperature", "T", "C")
 {
 	Wire.begin();
 	Wire.setClock(100000);
@@ -10,7 +10,7 @@ Temperature::Temperature()
 }
 
 Temperature::Temperature(float mL, float mH)
-	: Sensor(mL, mH)
+	: Sensor("Temperature", "T", "C", mL, mH)
 {
 	Wire.begin();
 	Wire.setClock(100000);

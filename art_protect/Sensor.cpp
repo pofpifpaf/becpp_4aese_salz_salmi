@@ -2,14 +2,20 @@
 
 int Sensor::nbSensors = 0;
 
-Sensor::Sensor()
- : marginLow(-1)
+Sensor::Sensor(String n, String ab, String u)
+ : name(n)
+ , abbreviation(ab)
+ , unit(u)
+ , marginLow(-1)
  , marginHigh(-1)
 {
 }
 
-Sensor::Sensor(float mL, float mH)
- : marginLow(mL)
+Sensor::Sensor(String n, String ab, String u, float mL, float mH)
+ : name(n)
+ , abbreviation(ab)
+ , unit(u) 
+ , marginLow(mL)
  , marginHigh(mH)
 {
 }
@@ -24,6 +30,21 @@ float Sensor::operator[](int i)
 int Sensor::getHistorySize()
 {
 	return history.size();
+}
+
+String Sensor::getName()
+{
+	return name;
+}
+
+String Sensor::getAbbreviation()
+{
+	return abbreviation;
+}
+
+String Sensor::getUnit()
+{
+	return unit;
 }
 
 

@@ -9,6 +9,7 @@
 #include "Proximity.h"
 #include "Temperature.h"
 #include "Humidity.h"
+#include "Screen.h"
 
 
 /**
@@ -21,6 +22,7 @@ class Application
     Proximity prox;
     Temperature temp;
     Humidity hum;
+    Screen screen;
 
   public :
 

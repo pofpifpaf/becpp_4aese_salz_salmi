@@ -1,7 +1,7 @@
 #include "Proximity.h"
 
 Proximity::Proximity(uint8_t pin, float mL, float mH) 
-	: Sensor(mL, mH)
+	: Sensor("Distance", "D", "cm", mL, mH)
 	, ultrasonic(pin)
 {
 	nbSensors++;
@@ -9,7 +9,7 @@ Proximity::Proximity(uint8_t pin, float mL, float mH)
 
 
 Proximity::Proximity(uint8_t pin) 
-	: Sensor()
+	: Sensor("Distance", "D", "cm")
 	, ultrasonic(pin)
 {
 	nbSensors++;

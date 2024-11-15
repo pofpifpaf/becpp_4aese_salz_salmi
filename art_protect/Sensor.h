@@ -4,6 +4,7 @@
 #define ERR_OUT_OF_RANGE 1;
 
 #include <vector>
+#include <Arduino.h>
 
 class Sensor 
 {
@@ -13,6 +14,10 @@ protected :
 	float marginHigh;
 	float marginLow;
 
+	String name;
+	String abbreviation;
+	String unit;
+
 	static int nbSensors; 
 
 public :
@@ -21,8 +26,12 @@ public :
 	float operator[](int i);
 	int getHistorySize();
 
-	Sensor();
-	Sensor(float mL, float mH);
+	Sensor(String n, String ab, String u);
+	Sensor(String n, String ab, String u, float mL, float mH);
+
+	String getName();
+	String getAbbreviation();
+	String getUnit();
 
 	bool isOutOfMargin();
 
