@@ -1,9 +1,16 @@
 #include "Proximity.h"
 
-Proximity::Proximity(uint8_t pin, long mH, long mL) 
-	: ultrasonic(pin)
-	, marginHigh(mH)
-	, marginLow(mL)
+Proximity::Proximity(uint8_t pin, long mL, long mH) 
+	: Sensor(mL, mH)
+	, ultrasonic(pin)
+{
+	nbSensors++;
+}
+
+
+Proximity::Proximity(uint8_t pin) 
+	: Sensor()
+	, ultrasonic(pin)
 {
 	nbSensors++;
 }
@@ -13,12 +20,6 @@ long Proximity::getValue()
 	long buff = ultrasonic.MeasureInCentimeters();
 	history.push_back(buff);
 	return buff; 
-}
-
-bool Proximity::isOutOfMargin()
-{
-	long buff = getValue();
-	return buff < marginLow || buff > marginHigh;
 }
 
 long Proximity::operator[](int i)

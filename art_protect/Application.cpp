@@ -1,12 +1,12 @@
 /*********************************************************************
  * @file  Apllication.cpp
- * @author <mettre l'adresse mail ou nom prenom>
+ * @author LahnM, Adam S.
  * @brief Fichier source de l'application
  *********************************************************************/
 #include "Application.h"
 
 Application::Application()
-  : prox(D5, 120, 14)
+  : prox(D5, 14, 120)
 {
 }
   
@@ -24,7 +24,13 @@ void Application::init(void)
 
 void Application::run(void)
 {
-  Serial.print("Distance : " + prox.getValue());
-  Serial.print(" Depasse : " + prox.isOutOfMargin());
-  Serial.println("Last value : " + prox[0]);
+  Serial.print("Distance : ");
+  Serial.println(prox.getValue());
+  delay(1000);
+  Serial.print(" Depasse : ");
+  Serial.println(prox.isOutOfMargin());
+  delay(1000);
+  Serial.print("Last value : ");
+  Serial.println(prox[0]);
+  
 }

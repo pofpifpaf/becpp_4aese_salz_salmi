@@ -8,22 +8,14 @@ class Proximity : public Sensor
 {
 private : 
 	Ultrasonic ultrasonic;
-	long marginHigh;
-	long marginLow;
 
 public:
-	Proximity(uint8_t pin, long mH, long mL);
+	Proximity(uint8_t pin, long mL, long mH);
+	Proximity(uint8_t pin);
 
 	long getValue();
 
-	bool isOutOfMargin();
-
 	long operator[](int i);
-
-
 };
-
-
-
 
 #endif

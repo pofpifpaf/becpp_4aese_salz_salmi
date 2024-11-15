@@ -10,16 +10,21 @@ class Sensor
 protected :
 	std::vector<long> history;
 
+	long marginHigh;
+	long marginLow;
+
 	static int nbSensors; 
 
 public :
 	virtual long getValue() = 0;
 	
-	// Sensor(); 
-
 	long operator[](int i);
+
+	Sensor();
+	Sensor(long mL, long mH);
+
+	bool isOutOfMargin();
+
 };
-
-
 
 #endif
