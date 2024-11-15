@@ -7,6 +7,8 @@
 #define APPLICATION_H_
 
 #include "Proximity.h"
+#include "Temperature.h"
+#include "Humidity.h"
 
 
 /**
@@ -17,6 +19,8 @@ class Application
 {
   private: 
     Proximity prox;
+    Temperature temp;
+    Humidity hum;
 
   public :
 

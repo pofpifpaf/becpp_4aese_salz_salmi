@@ -1,5 +1,5 @@
-#ifndef PROXIMITY_HPP
-#define PROXIMITY_HPP
+#ifndef PROXIMITY_H
+#define PROXIMITY_H
 
 #include "Sensor.h"
 #include "Ultrasonic.h"
@@ -10,12 +10,11 @@ private :
 	Ultrasonic ultrasonic;
 
 public:
-	Proximity(uint8_t pin, long mL, long mH);
+	Proximity(uint8_t pin, float mL, float mH);
 	Proximity(uint8_t pin);
 
-	long getValue();
+	float getValue();
 
-	long operator[](int i);
 };
 
 #endif

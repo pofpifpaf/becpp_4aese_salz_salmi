@@ -1,6 +1,6 @@
 #include "Proximity.h"
 
-Proximity::Proximity(uint8_t pin, long mL, long mH) 
+Proximity::Proximity(uint8_t pin, float mL, float mH) 
 	: Sensor(mL, mH)
 	, ultrasonic(pin)
 {
@@ -15,18 +15,10 @@ Proximity::Proximity(uint8_t pin)
 	nbSensors++;
 }
 
-long Proximity::getValue() 
+float Proximity::getValue() 
 {
-	long buff = ultrasonic.MeasureInCentimeters();
+	float buff = ultrasonic.MeasureInCentimeters();
 	history.push_back(buff);
 	return buff; 
 }
 
-long Proximity::operator[](int i)
-{
-	if (i < 0 && i >= history.size()) {
-		throw ERR_OUT_OF_RANGE;
-	} 
-
-	return history[i];
-}

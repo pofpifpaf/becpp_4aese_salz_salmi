@@ -8,23 +8,28 @@ Sensor::Sensor()
 {
 }
 
-Sensor::Sensor(long mL, long mH)
+Sensor::Sensor(float mL, float mH)
  : marginLow(mL)
  , marginHigh(mH)
 {
 }
 
-long Sensor::operator[](int i)
+float Sensor::operator[](int i)
 {
 	// if (i < 0 && i >= history.size()) throw ERR_OUT_OF_RANGE;
-	 
+
 	return history[i];
+}
+
+int Sensor::getHistorySize()
+{
+	return history.size();
 }
 
 
 bool Sensor::isOutOfMargin()
 {
 	// if (marginLow == -1 && marginHigh == -1) throw MARGINS_UNDEFINED; 
-	long buff = getValue();
+	float buff = getValue();
 	return buff < marginLow || buff > marginHigh;
 }

@@ -1,5 +1,5 @@
-#ifndef SENSOR_HPP
-#define SENSOR_HPP
+#ifndef SENSOR_H
+#define SENSOR_H
 
 #define ERR_OUT_OF_RANGE 1;
 
@@ -8,20 +8,21 @@
 class Sensor 
 {
 protected :
-	std::vector<long> history;
+	std::vector<float> history;
 
-	long marginHigh;
-	long marginLow;
+	float marginHigh;
+	float marginLow;
 
 	static int nbSensors; 
 
 public :
-	virtual long getValue() = 0;
+	virtual float getValue() = 0;
 	
-	long operator[](int i);
+	float operator[](int i);
+	int getHistorySize();
 
 	Sensor();
-	Sensor(long mL, long mH);
+	Sensor(float mL, float mH);
 
 	bool isOutOfMargin();
 
