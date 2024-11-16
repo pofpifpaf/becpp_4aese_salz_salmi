@@ -11,7 +11,7 @@ Ticker TimerMeasurmentsTaking;
 Proximity Application::prox(D5, 15, 300);
 Temperature Application::temp(15, 20);
 Humidity Application::hum(0, 100);
-Screen Application::screen;
+Screen Application::screen();
 
 Application::Application()
 {
@@ -19,8 +19,6 @@ Application::Application()
   
 Application::~Application()
 {
-  // Code
-  ;
 }  
 
 void Application::init(void)
@@ -33,19 +31,21 @@ void Application::init(void)
 
 void Application::run(void)
 {
-  if (Serial.available()) {
-    String commande = Serial.readString();
-    commande.trim();
+  if (Serial.available())
+  {
+    String command = Serial.readString();
+    command.trim();
     Serial.print("Command received : ");
-    Serial.println(commande);
+    Serial.println(command);
     
-    if (commande == "-ack_prox") {
+    //tout cela est temporaire non ?
+    if (command == "-ack_prox") {
       prox.setAcknowledgement(true);
       Serial.println("Prox acknowledged");
-    } else if (commande == "-ack_temp") {
+    } else if (command == "-ack_temp") {
       temp.setAcknowledgement(true);
       Serial.println("Temp acknowledged");
-    } else if (commande == "-ack_hum") {
+    } else if (command == "-ack_hum") {
       hum.setAcknowledgement(true);
       Serial.println("Hum acknowledged");
     } else {
@@ -57,58 +57,26 @@ void Application::run(void)
 
 void Application::updateScreen()
 {
-  if (prox.getAlert() && !prox.getAcknowledgement()) {
-        screen.displayAlert(prox);
-    } else if (temp.getAlert() && !temp.getAcknowledgement()) {
-        screen.displayAlert(temp);
-    } else if (hum.getAlert() && !hum.getAcknowledgement()) {
-        screen.displayAlert(hum);
-    } else {
-        screen.refreshScreen(prox, temp, hum);
-    }
+  if (prox.getAlert()) {
+    screen.displayAlert(prox);
+  } else if (temp.getAlert()) {
+    screen.displayAlert(temp);
+  } else if (hum.getAlert()) {
+    screen.displayAlert(hum);
+  } else {
+    screen.refreshScreen(prox, temp, hum);
+  }
+}
+
+void Application::sensorMonitor(Sensor& sens)
+{
+  sens.setAlert(sens.isOutOfMargin() || (!sens.getAcknowledgement() && sens.getAlert()));
+  sens.setAcknowledgement(false);
 }
 
 void Application::sensorsMonitoring()
 {
-  bool buff_prox = prox.isOutOfMargin();
-  if (buff_prox) { 
-      // If outside margins, activate alert
-      Serial.println("Prox out of margin");
-      prox.setAlert(true); 
-  } else if (!buff_prox && prox.getAcknowledgement() == false && prox.getAlert() == true) {
-      // If in margins but ack is still false, keep alert enabled
-      prox.setAlert(true);
-  } else if (!buff_prox && prox.getAcknowledgement() == true) {
-      // If in margins and ack is true, disable alert and reset acknowledgment
-      prox.setAlert(false);
-      prox.setAcknowledgement(false);
-  }
-  
-  bool buff_temp = temp.isOutOfMargin();
-  if (buff_temp) { 
-      // If outside margins, activate alert
-      Serial.println("Temp out of margin");
-      temp.setAlert(true); 
-  } else if (!buff_temp && temp.getAcknowledgement() == false && temp.getAlert() == true) {
-      // If in margins but ack is still false, keep alert enabled
-      temp.setAlert(true);
-  } else if (!buff_temp && temp.getAcknowledgement() == true) {
-      // If in margins and ack is true, disable alert and reset acknowledgment
-      temp.setAlert(false);
-      temp.setAcknowledgement(false);
-  }
-
-  bool buff_hum = hum.isOutOfMargin();
-  if (buff_hum) { 
-      // If outside margins, activate alert
-      Serial.println("Hum out of margin");
-      hum.setAlert(true); 
-  } else if (!buff_hum && hum.getAcknowledgement() == false && hum.getAlert() == true) {
-      // If in margins but ack is still false, keep alert enabled
-      hum.setAlert(true);
-  } else if (!buff_hum && hum.getAcknowledgement() == true) {
-      // If in margins and ack is true, disable alert and reset acknowledgment
-      hum.setAlert(false);
-      hum.setAcknowledgement(false);
-  }
+  sensorMonitor(prox);
+  sensorMonitor(hum);
+  sensorMonitor(temp);
 }

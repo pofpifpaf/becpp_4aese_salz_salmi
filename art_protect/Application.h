@@ -10,6 +10,7 @@
 #include "Temperature.h"
 #include "Humidity.h"
 #include "Screen.h"
+#include "Sensor.h"
 #include "SHT31.h"
 #include "Wire.h"
 #include <Ticker.h>
@@ -52,6 +53,8 @@ class Application
     void run(void);
 
     static void updateScreen();
+
+    static void sensorMonitor(Sensor& sens);
 
     static void sensorsMonitoring();
 };

@@ -3,6 +3,7 @@
 
 #include "Sensor.h"
 #include "SHT31.h"
+#include "Wire.h"
 
 
 class Humidity : public Sensor

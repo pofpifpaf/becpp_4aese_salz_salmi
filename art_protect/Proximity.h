@@ -13,7 +13,7 @@ public:
 	Proximity(uint8_t pin, float mL, float mH);
 	Proximity(uint8_t pin);
 
-	float getValue() override;
+	float getValue();
 
 };
 

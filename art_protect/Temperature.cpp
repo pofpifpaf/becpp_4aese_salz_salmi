@@ -18,7 +18,7 @@ Temperature::Temperature(float mL, float mH)
 	sht31.begin();
 }
 
-float Temperature::getValue()
+float Temperature::getValue() 
 {
 	sht31.read();
 	float buff = sht31.getTemperature();

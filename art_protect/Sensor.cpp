@@ -11,6 +11,7 @@ Sensor::Sensor(String n, String ab, String u)
  , acknowledgement(false)
  , alert(false)
 {
+	nbSensors++;
 }
 
 Sensor::Sensor(String n, String ab, String u, float mL, float mH)
@@ -22,42 +23,31 @@ Sensor::Sensor(String n, String ab, String u, float mL, float mH)
  , acknowledgement(false)
  , alert(false)
 {
+	nbSensors++;
 }
 
-float Sensor::operator[](int i)
+float Sensor::operator[](int i) const
 {
 	// if (i < 0 && i >= history.size()) throw ERR_OUT_OF_RANGE;
 
 	return history[i];
 }
 
-int Sensor::getHistorySize()
-{
-	return history.size();
-}
+int Sensor::getHistorySize() const { return history.size(); }
 
-String Sensor::getName()
-{
-	return name;
-}
+String Sensor::getName() const { return name; }
 
-String Sensor::getAbbreviation()
-{
-	return abbreviation;
-}
+String Sensor::getAbbreviation() const { return abbreviation; }
 
-String Sensor::getUnit()
-{
-	return unit;
-}
+String Sensor::getUnit() const { return unit; }
 
-bool Sensor::getAcknowledgement() {return acknowledgement;}
+bool Sensor::getAcknowledgement() const { return acknowledgement; }
 
-void Sensor::setAcknowledgement(bool ack) {acknowledgement = ack;}
+void Sensor::setAcknowledgement(bool ack) { acknowledgement = ack; }
 
-bool Sensor::getAlert() {return alert;}
+bool Sensor::getAlert() const { return alert; }
 
-void Sensor::setAlert(bool al) {alert = al;}
+bool Sensor::setAlert(bool al) { return alert = al; }
 
 bool Sensor::isOutOfMargin()
 {

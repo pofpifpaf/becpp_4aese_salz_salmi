@@ -18,7 +18,7 @@ Humidity::Humidity(float mL, float mH)
 	sht31.begin();
 }
 
-float Humidity::getValue()
+float Humidity::getValue()  
 {
 	sht31.read();
 	float buff = sht31.getHumidity();

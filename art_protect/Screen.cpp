@@ -1,6 +1,5 @@
 #include "Screen.h"
 
-
 Screen::Screen()
     : lcd()
 {

@@ -26,20 +26,21 @@ protected :
 public :
 	virtual float getValue() = 0;
 	
-	float operator[](int i);
-	int getHistorySize();
+	float operator[](int i) const;
+	int getHistorySize() const;
 
 	Sensor(String n, String ab, String u);
 	Sensor(String n, String ab, String u, float mL, float mH);
 
-	String getName();
-	String getAbbreviation();
-	String getUnit();
+	String getName() const;
+	String getAbbreviation() const;
+	String getUnit() const;
 
-	bool getAcknowledgement();
+	bool getAcknowledgement() const;
+	bool getAlert() const;
+
 	void setAcknowledgement(bool ack);
-	bool getAlert();
-	void setAlert(bool al);
+	bool setAlert(bool al);
 
 	bool isOutOfMargin();
 
